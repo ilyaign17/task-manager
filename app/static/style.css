@@ -1,0 +1,214 @@
+/* =====================
+   Переменные (цвета, отступы)
+   ===================== */
+:root {
+  --accent: #2563eb;
+  --muted: #f3f4f6;
+  --border: #e5e7eb;
+  --text: #111827;
+
+  --success: #4caf50;
+  --success-hover: #45a049;
+  --danger: #f08080;
+}
+
+/* =====================
+   Сброс и базовые стили
+   ===================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: #fafafa;
+}
+
+h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* =====================
+   Шапка
+   ===================== */
+header {
+  background: var(--muted);
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* =====================
+   Контейнеры и сетки
+   ===================== */
+main {
+  max-width: 1000px;
+  margin: 16px auto;
+  padding: 0 16px;
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 12px;
+}
+
+/* =====================
+   Tabs
+   ===================== */
+.tabs {
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.tab.active {
+  background: var(--muted);
+  color: var(--accent);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.tab-panel.hidden {
+  display: none;
+}
+
+/* =====================
+   Формы
+   ===================== */
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font: inherit;
+}
+
+/* =====================
+   Кнопки
+   ===================== */
+button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+/* Save (активная) */
+.save-btn {
+  background-color: var(--success);
+  color: #fff;
+}
+.save-btn:hover:enabled {
+  background-color: var(--success-hover);
+}
+
+/* Save (заблокированная) */
+.save-btn:disabled {
+  background-color: var(--danger);
+  color: #fff;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* Варианты кнопок */
+button.secondary {
+  background: var(--text);
+  color: #fff;
+}
+
+button.ghost {
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* =====================
+   Мелочи (uuid, ошибки)
+   ===================== */
+.uuid {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.error {
+  color: #b91c1c;
+  margin-top: 8px;
+}
+
+/* =====================
+   Список задач
+   ===================== */
+.task-row {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.task-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.task-title {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.task-aux {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.task-details {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+  display: none;
+}
+
+.task-details.open {
+  display: block;
+}

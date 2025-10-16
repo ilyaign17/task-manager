@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Менеджер задач</title>
+
+  <!-- Подключим стили (создадим app/static/style.css на следующем шаге) -->
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Менеджер задач</h1>
+  </header>
+
+  <!-- Вкладки -->
+  <nav class="tabs">
+    <button class="tab active" data-tab="task">Работа с задачей</button>
+    <button class="tab" data-tab="list">Список задач</button>
+  </nav>
+
+  <main class="container">
+    <!-- Вкладка: Работа с задачей -->
+    <section id="tab-task" class="tab-panel">
+      <div class="card">
+        <h2>Форма создания/редактирования</h2>
+
+        <form id="task-form" class="grid">
+          <!-- скрытый UUID (появляется при редактировании) -->
+          <input type="hidden" id="task-uuid" />
+
+          <label>Заголовок
+            <input type="text" id="task-title" maxlength="200" required />
+          </label>
+
+          <label>Описание
+            <textarea id="task-desc" rows="4" maxlength="2000"></textarea>
+          </label>
+
+          <label>Статус
+            <select id="task-status">
+              <option>создано</option>
+              <option>в работе</option>
+              <option>завершено</option>
+            </select>
+          </label>
+
+          <div class="row">
+            <button type="submit" id="btn-save" class="save-btn">Сохранить</button>
+            <button type="button" id="btn-reset" class="secondary">Сбросить форму</button>
+          </div>
+
+          <!-- строка с UUID (покажем/скроем из JS) -->
+          <div class="uuid" id="uuid-line" hidden>
+            UUID: <span id="uuid-text"></span>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3>Быстрый доступ по UUID</h3>
+        <div class="row">
+          <input type="text" id="quick-uuid" placeholder="вставьте UUID" />
+          <button id="btn-fetch-by-uuid">Получить</button>
+        </div>
+        <div class="error" id="quick-error" hidden></div>
+      </div>
+    </section>
+
+    <!-- Вкладка: Список задач -->
+    <section id="tab-list" class="tab-panel hidden">
+      <div class="card">
+        <div class="row">
+          <label>Фильтр по статусу
+            <select id="filter-status">
+              <option value="">(все)</option>
+              <option value="создано">создано</option>
+              <option value="в работе">в работе</option>
+              <option value="завершено">завершено</option>
+            </select>
+          </label>
+          <button id="btn-refresh">Обновить</button>
+          <button class="ghost" id="btn-new">+ Новая задача</button>
+        </div>
+      </div>
+
+      <div id="list-container"><!-- сюда JS отрисует список --></div>
+    </section>
+  </main>
+
+  <!-- Подключим JS (создадим app/static/app.js на следующем шаге) -->
+  <script src="/static/app.js"></script>
+</body>
+</html>
